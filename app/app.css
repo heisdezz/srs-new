@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "./styles.css";
+/*@plugin "daisyui";
+@layer {
+    * {
+        @apply transition-all duration-150 ease-in-out;
+    }
+}
+@utility btn {
+    @apply active:scale-[.96]
+}*/
