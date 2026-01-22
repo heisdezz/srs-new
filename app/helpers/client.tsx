@@ -1,5 +1,6 @@
 import { pb } from "@/api/apiClient";
 import type { CartItemOption, Option, UserCart } from "@/types";
+import { useLoaderData } from "react-router";
 
 export const validateItems = (item: Record<string, unknown>) => {
   return (

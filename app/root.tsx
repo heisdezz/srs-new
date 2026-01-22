@@ -16,6 +16,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CookieTs from "cookie-ts";
 
 import appCss from "./app.css?url";
+import { Toaster } from "sonner";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -44,10 +45,17 @@ export const links: Route.LinksFunction = () => [
 ];
 export const loader = async (props: LoaderFunctionArgs) => {
   const cookie = props.request.headers.get("cookie");
-  const parsed = CookieTs.parse(cookie);
-  console.log(parsed);
-  return { theme: parsed["theme"] || "srs" };
+  const parsed = CookieTs.parse(cookie ?? "") as {
+    theme?: string;
+    pb_auth?: string;
+  };
+  const pb_auth = parsed?.pb_auth;
+  const theme = parsed?.theme || "srs";
+  return { theme, pb_auth };
 };
+// export const clientLoader = async () => {
+//   console.log("client");
+// };
 const client = new QueryClient({
   defaultOptions: {
     queries: {
@@ -74,6 +82,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <QueryClientProvider client={client}>{children}</QueryClientProvider>
         {/*{children}*/}
+        <Toaster richColors />
         <ScrollRestoration />
         <Scripts />
       </body>

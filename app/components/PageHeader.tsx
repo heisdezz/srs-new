@@ -3,7 +3,7 @@ import { Menu, ShoppingCart } from "lucide-react";
 import AuthButtonHeader from "./AuthButtonHeader";
 import HeaderLinks from "./HeaderLinks";
 import ThemeButton from "./ThemeButton";
-
+import { ClientOnly } from "remix-utils/client-only";
 export default function PageHeader() {
   return (
     <div className="h-16 border-b fade ">
@@ -16,7 +16,7 @@ export default function PageHeader() {
         <HeaderLinks />
         <div className="ml-auto md:ml-0 space-x-2 hidden md:flex  items-center">
           <ThemeButton />
-          <AuthButtonHeader />
+          <ClientOnly>{() => <AuthButtonHeader />}</ClientOnly>
         </div>
         <div className="ml-auto  md:ml-0 md:hidden  space-x-2">
           <ThemeButton />
