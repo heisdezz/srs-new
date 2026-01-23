@@ -1,13 +1,13 @@
 import { useParams } from "react-router";
-import ProductDetails from "./-components/ProductDetails";
-import ProductInfo from "./-components/ProductInfo";
 import { useQuery } from "@tanstack/react-query";
 import { pb } from "@/api/apiClient";
 import PageLoader from "@/components/layouts/PageLoader";
 import type { ProductsRecord } from "pocketbase-types";
 import type { OptionsConfig } from "@/types";
+import ProductInfo from "../-components/ProductInfo";
+import ProductDetails from "../-components/ProductDetails";
 
-export default function ProductPage() {
+export default function index() {
   const { id } = useParams();
   if (!id) return null;
 

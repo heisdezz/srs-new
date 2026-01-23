@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useRouteLoaderData,
   type LoaderFunctionArgs,
 } from "react-router";
 
@@ -70,7 +71,7 @@ const client = new QueryClient({
   },
 });
 export function Layout({ children }: { children: React.ReactNode }) {
-  const props = useLoaderData<typeof loader>();
+  const props = useRouteLoaderData<typeof loader>("root");
   return (
     <html lang="en" data-theme={props.theme}>
       <head>

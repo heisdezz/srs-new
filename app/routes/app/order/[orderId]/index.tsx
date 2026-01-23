@@ -6,8 +6,8 @@ import type { OptionsConfig } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import type { ProductsResponse, OrdersResponse } from "pocketbase-types";
-import OrderStatus from "./-components/OrderStatus";
 import { ShippingAddress } from "@/routes/admin/-components/AdminOrderCard";
+import OrderStatus from "../-components/OrderStatus";
 
 export default function AdminOrderPage() {
   const { orderId } = useParams();

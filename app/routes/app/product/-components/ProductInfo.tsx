@@ -3,6 +3,7 @@ import type { ProductsRecord } from "pocketbase-types";
 import type { OptionsConfig } from "@/types";
 import ProductReviews from "./ProductReviews";
 import Carousel from "./Carousel";
+import { ClientOnly } from "remix-utils/client-only";
 
 export default function ProductInfo({
   item,
@@ -11,7 +12,7 @@ export default function ProductInfo({
 }) {
   return (
     <div className=" space-y-4">
-      <Carousel item={item} />
+      <Carousel item={item} />;
       <div className="md:hidden">
         <ProductDetails item={item} />
       </div>

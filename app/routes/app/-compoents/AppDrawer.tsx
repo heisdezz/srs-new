@@ -1,5 +1,6 @@
 import { useUser } from "@/helpers/client";
 import { Link } from "react-router";
+import { ClientOnly } from "remix-utils/client-only";
 
 const links = [
   {
@@ -45,22 +46,30 @@ export default function AppDrawer() {
         </li>
       </div>
       <div className="mt-auto  menu">
-        {user ? (
-          <>
-            {profile_links.map((link) => (
-              <li key={link.path}>
-                <a href={link.path}>{link.label}</a>
-              </li>
-            ))}
-          </>
-        ) : (
-          <li>
-            <a href="/auth/login" className="text-lg">
-              {" "}
-              Login
-            </a>
-          </li>
-        )}
+        <ClientOnly>
+          {() => {
+            return (
+              <>
+                {user ? (
+                  <>
+                    {profile_links.map((link) => (
+                      <li key={link.path}>
+                        <a href={link.path}>{link.label}</a>
+                      </li>
+                    ))}
+                  </>
+                ) : (
+                  <li>
+                    <a href="/auth/login" className="text-lg">
+                      {" "}
+                      Login
+                    </a>
+                  </li>
+                )}
+              </>
+            );
+          }}
+        </ClientOnly>
       </div>
     </div>
   );
